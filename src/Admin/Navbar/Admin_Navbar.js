@@ -32,6 +32,7 @@ import Hotels from '../Hotels/Hotels';
 import Flights from '../Flights/Flights';
 import AddEditFlight from '../Flights/AddEditFlight';
 import Users from '../Users/ManageUsers';
+import { logOut } from '../../services/StorageService';
 
 const Admin_Navbar = () => {
     const navigate = useNavigate();
@@ -40,8 +41,7 @@ const Admin_Navbar = () => {
    
     const { setRole } = useContext(AuthContext)
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("role");
+        logOut();
         setRole(null)
         navigate("/login");
     }

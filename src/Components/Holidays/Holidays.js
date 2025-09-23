@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate} from "react-router-dom";
 import { Card, CardContent, CardMedia, Typography, Button, Box, Grid } from "@mui/material";
 import { Star } from "lucide-react"; 
-
+import { isUserLoggedIn } from "../../services/StorageService";
 function Holidays() {
   const cities =  
   [
@@ -17,7 +17,14 @@ function Holidays() {
 ]
 
 const navigate =useNavigate();
-    
+ const handleBook = (city)=>{
+  if(isUserLoggedIn()){
+   navigate("/dform",{state:city.price})
+  }
+  else{
+    navigate("/login")
+  }
+ }   
  
     return(
   
@@ -61,7 +68,7 @@ const navigate =useNavigate();
              <Button
                variant="contained"
                className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl shadow"
-               onClick={()=>navigate("/dform",{state:city.price})}
+               onClick={()=>{handleBook(city)}}
              >
                Book Now
              </Button>

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Carousel from '../Carousel/carousel'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -9,7 +9,7 @@ import HoneymoonFeaturedTours from '../FeaturedTours/HoneymoonFeaturedTours';
 
 const Home = () => {
   const [isOpen,setIsOpen] = useState(true);
-
+  
   return (
     <>
     

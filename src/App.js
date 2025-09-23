@@ -29,6 +29,7 @@ import ManageUsers from './Admin/Users/ManageUsers';
 import AdminHotels from './Admin/Hotels/Hotels';
 import AddEditHotel from './Admin/Hotels/AddEditHotel';
 import AddEditFlight from './Admin/Flights/AddEditFlight';
+import UserNavbar from './Components/UserNavbar/UserNavbar';
 function App() {
   const { role } = useContext(AuthContext);
 
@@ -36,9 +37,12 @@ function App() {
     <>
       <BrowserRouter>
         {console.log(role)}
-        {role == "ADMIN" ? <Admin_Navbar /> : <TopNavbar />}
-        {role == "USER" ? <Navbar /> : null}
+        {role == "ADMIN" && <Admin_Navbar/>}
+       { role == "USER" && <UserNavbar/>}
+       {role == null && <TopNavbar/>}
+        {role=="ADMIN" ? null:<Navbar/>}
 
+        
 
         <Routes>
           <Route path="/" element={<Home />} />

@@ -8,12 +8,11 @@ import { getToken,logOut } from '../../services/StorageService';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const TopNavbar = () => {
+const UserNavbar = () => {
  
   const navigate = useNavigate();
 
-  const handleLogin = () => navigate("/login");
-  const handleRegister = () => navigate("/register");
+
   const handleLogout = () => {
     logOut();
     navigate("/login");
@@ -27,18 +26,19 @@ const TopNavbar = () => {
 
           </Typography>
 
-      
-            <>
-              <Button color="inherit" onClick={()=>{handleRegister()}}>Signup</Button>
-              <Button color="inherit" onClick={()=>{handleLogin()}}>Login</Button>
-            </>
-   
-           
         
+        
+            <>
+              <Link to="/myprofile/" style={{ textDecoration: "none", marginRight: "10px" }}>
+                <Typography sx={{ color: "green", fontWeight: "bold" }}>My Profile</Typography>
+              </Link>
+              <Button color="inherit" onClick={()=>{handleLogout()}}>Logout</Button>
+            </>
+     
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
 
-export default TopNavbar;
+export default UserNavbar;

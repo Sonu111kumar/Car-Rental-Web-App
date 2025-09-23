@@ -1,6 +1,7 @@
 import React, { useState,useContext } from 'react'
 import { loginUser } from '../../services/user-service';
 import { doLogin } from './Auth';
+import { saveToken,saveUser } from '../../services/StorageService';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
@@ -35,8 +36,8 @@ const Login = () => {
 
       // Save token & role
       doLogin(data.jwtToken, () => {
-        localStorage.setItem("token", data.jwtToken);
-        localStorage.setItem("role", data.role);
+        saveToken(data.jwtToken);
+        saveUser(data.role);
         setRole(data.role);
       });
 
